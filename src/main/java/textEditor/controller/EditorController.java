@@ -19,14 +19,17 @@ public class EditorController {
 
     @GetMapping(value = "/print")
     String print() {
+        log.info("/print");
         return editorService.print();
     }
     @GetMapping(value = "/undo")
     String undo() {
+        log.info("/undo");
         return editorService.undo();
     }
     @GetMapping(value = "/redo")
     String redo() {
+        log.info("/redo");
         return editorService.redo();
     }
 
@@ -43,21 +46,25 @@ public class EditorController {
 
     @PostMapping(value = "/italic")
     String italic(@RequestParam(value = "from") int from, @RequestParam(value = "to") int to) throws MixedUpException, LengthException {
+        log.info("/italic {} {}", from, to);
         return editorService.italic(from, to);
     }
 
     @PostMapping(value = "/bold")
     String bold(@RequestParam(value = "from") int from, @RequestParam(value = "to") int to) throws MixedUpException, LengthException  {
+        log.info("/bold {} {}", from, to);
         return editorService.bold(from, to);
     }
 
     @PostMapping(value = "/underline")
     String underline(@RequestParam(value = "from") int from, @RequestParam(value = "to")  int to) throws MixedUpException, LengthException  {
+        log.info("/underline {} {}", from, to);
         return editorService.underline(from, to);
     }
 
     @PostMapping("/remove")
     String remove(@RequestParam(value = "from") int from, @RequestParam(value = "to") int to) throws MixedUpException, LengthException  {
+        log.info("/remove {} {}", from, to);
         return editorService.remove(from, to);
     }
 
